@@ -1,2 +1,1 @@
-"# DiscordTabs" 
-"# DiscordTabs" 
+# DiscordTabs
