@@ -1,7 +1,8 @@
 {
-	"name": "Show Connections",
-	"version": "1.0.0",
-	"description": "Shows connections in user popout",
-	"author": "ugly-patootie#0611",
-	"license": "MIT"
+	"name": "DiscordTabs",
+	"version": "0.0.1-beta",
+	"description": "Let you organize Discord in tabs",
+	"author": "DavidNyan10#8581 discord:592228909052067865",
+	"license": "MIT",
+	"consent": ["ext_listing"]
 }

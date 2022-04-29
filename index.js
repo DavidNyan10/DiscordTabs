@@ -1,25 +1,17 @@
-const { Plugin } = require('powercord/entities');
-const { getModule, React } = require('powercord/webpack');
-const { inject, uninject } = require('powercord/injector');
-const Connections = require('./Components/Connections');
-const loadIcons = require('./loadIcons');
+const { Plugin } = require("powercord/entities");
+const { getModule, React } = require("powercord/webpack");
+const { inject, uninject } = require("powercord/injector");
 
-module.exports = class ShowConnection extends Plugin {
-  startPlugin() {
-    loadIcons();
+module.exports = class DiscordTabs extends Plugin {
+	startPlugin() {
+		loadIcons();
 
-    this.loadStylesheet('style.css');
-    const Popout = getModule(m => m.default?.displayName === 'UserPopoutBody', false);
+		this.loadStylesheet("style.css");
 
-    inject('sc-injection', Popout, 'default', ([{ user }], res) => {
-      res.props.children.splice(2, 0, React.createElement(Connections, { user: user.id }));
-      return res;
-    });
+		inject("dt-injection");
+	}
 
-    Popout.default.displayName = 'UserPopoutBody';
-  }
-
-  pluginWillUnload() {
-    uninject('sc-injection');
-  }
+	pluginWillUnload() {
+		uninject("dt-injection");
+	}
 };
