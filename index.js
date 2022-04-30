@@ -1,17 +1,15 @@
 const { Plugin } = require("powercord/entities");
-const { getModule, React } = require("powercord/webpack");
-const { inject, uninject } = require("powercord/injector");
+const { React, ReactDOM } = require("powercord/webpack");
+const TestHead = require("./Components/TestHead");
 
 module.exports = class DiscordTabs extends Plugin {
 	startPlugin() {
-		loadIcons();
+		// Thanks stackoverflow for this
+		const dtContainer = document.createElement("div");
+		const target = document.querySelector(".chat-2ZfjoI .title-31SJ6t");
 
-		this.loadStylesheet("style.css");
+		target.after(dtContainer);
 
-		inject("dt-injection");
-	}
-
-	pluginWillUnload() {
-		uninject("dt-injection");
+		ReactDOM.render(TestHead, dtContainer);
 	}
 };
